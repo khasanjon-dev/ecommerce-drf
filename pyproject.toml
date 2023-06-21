@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "root"
+name = "ecommerce"
 version = "0.1.0"
 description = ""
 authors = ["Khasanjon Mamadaliyev <khasanjon.eng@gmail.com>"]
@@ -8,6 +8,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 django = "^4.2.2"
+drf-yasg = "^1.21.6"
+pillow = "^9.5.0"
 
 
 [build-system]

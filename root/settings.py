@@ -1,7 +1,8 @@
 from pathlib import Path
+import sys, os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+sys.path.append(os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'django-insecure-$!4z82bzlr9=cor)k#1cn58$5#95-209bkik2!k73s6cqzwyat'
 
 DEBUG = True
@@ -15,6 +16,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # third party apps
+    'drf_yasg',
+    'mptt',
 
     # my apps
     'payments',
@@ -53,6 +58,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'root.wsgi.application'
+
+AUTH_USER_MODEL = 'users.User'
 
 DATABASES = {
     'default': {
