@@ -5,3 +5,5 @@ mig:
 del:
 	find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 	find . -path "*/migrations/*.pyc" -delete
+admin:
+	python3 manage.py createsuperuser --phone 998337377060 --email admin@gmail.com
