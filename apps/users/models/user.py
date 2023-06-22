@@ -1,7 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.db.models import BooleanField, TextChoices
+from django.db.models import BooleanField, TextChoices, CharField, ImageField
 
 
 class UserManager(BaseUserManager):
@@ -26,14 +26,14 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     class Role(TextChoices):
-        MERCHANT = 'merchant', 'merchant'
         CUSTOMER = 'customer', 'customer'
+        MERCHANT = 'merchant', 'merchant'
 
-    first_name = models.CharField(max_length=255)
-    username = models.CharField(max_length=150, blank=True, null=True)
-    photo = models.ImageField(upload_to='images/users', null=True, blank=True)
-    phone_number = models.CharField(max_length=12, unique=True)
-    role = models.CharField(max_length=12, choices=Role.choices, default=Role.CUSTOMER)
+    first_name = CharField(max_length=255)
+    username = CharField(max_length=150, blank=True, null=True)
+    photo = ImageField(upload_to='images/users', null=True, blank=True)
+    phone_number = CharField(max_length=12, unique=True)
+    role = CharField(max_length=12, choices=Role.choices, default=Role.CUSTOMER)
 
     objects = UserManager()
 

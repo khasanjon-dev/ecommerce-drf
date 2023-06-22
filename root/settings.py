@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     # third party apps
     'drf_yasg',
     'mptt',
+    'rest_framework_simplejwt',
 
     # my apps
     'payments',
@@ -94,3 +95,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
