@@ -1,11 +1,8 @@
 from django.contrib.auth.hashers import make_password
-from django.contrib.auth.models import update_last_login
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.exceptions import ValidationError
 from rest_framework.fields import CharField
-from rest_framework.serializers import ModelSerializer
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.settings import api_settings
+from rest_framework.serializers import ModelSerializer, Serializer
 
 from users.models import User
 from utils.validators import validate_phone
@@ -37,22 +34,9 @@ class UserModelSerializer(ModelSerializer):
         return attrs
 
 
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+class SendCode(Serializer):
+    phone_number = CharField(max_length=12)
+
     def validate(self, attrs):
         phone_number = attrs['phone_number']
-        password = attrs['password']
-        if not User.objects.filter(phone_number=phone_number).exists():
-            raise ValidationError('User is not registered!')
-        user = User.objects.filter(phone_number=phone_number).first()
-        if not user.check_password(password):
-            raise ValidationError('Password is not correct!')
-
-        data = super().validate(attrs)
-        refresh = self.get_token(self.user)
-
-        data['refresh'] = str(refresh)
-        data['access'] = str(refresh.access_token)
-        if api_settings.UPDATE_LAST_LOGIN:
-            update_last_login(None, self.user)
-
-        return data
+        validate_phone(phone_number)

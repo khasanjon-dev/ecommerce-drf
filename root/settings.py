@@ -1,11 +1,16 @@
+import os
+import sys
 from pathlib import Path
-import sys, os
+
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(os.path.join(BASE_DIR, 'apps'))
-SECRET_KEY = 'django-insecure-$!4z82bzlr9=cor)k#1cn58$5#95-209bkik2!k73s6cqzwyat'
+load_dotenv()
 
-DEBUG = True
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -61,13 +66,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'root.wsgi.application'
 
 AUTH_USER_MODEL = 'users.User'
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
