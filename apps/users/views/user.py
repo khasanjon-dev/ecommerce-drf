@@ -10,8 +10,7 @@ class UserModelViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserModelSerializer
 
-    @action(methods=['post'], detail=False, permission_classes=(AllowAny,), serializer_class=)
+    @action(methods=['post'], detail=False, permission_classes=(AllowAny,))
     def send_code(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid()
-
