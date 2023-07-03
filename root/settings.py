@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'mptt',
     'rest_framework_simplejwt',
+    'django_filters',
 
     # my apps
     'payments',
