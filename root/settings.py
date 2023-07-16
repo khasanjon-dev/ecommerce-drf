@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'mptt',
     'rest_framework_simplejwt',
     'django_filters',
-
     # my apps
     'payments',
     'products',
@@ -61,7 +60,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
-    },
+    }
 ]
 
 WSGI_APPLICATION = 'root.wsgi.application'
@@ -121,3 +120,10 @@ AWS_S3_ENDPOINT_URL = MINIO_ENDPOINT
 AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_AUTH = True
 AWS_S3_FILE_OVERWRITE = False
+
+# elastic search
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'localhost:9200'
+    },
+}

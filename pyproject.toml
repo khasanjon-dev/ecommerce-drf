@@ -17,6 +17,9 @@ django-storages = "^1.13.2"
 boto3 = "^1.26.165"
 coreapi = "^2.3.3"
 django-filter = "^23.2"
+elasticsearch = "7.14.0"
+elasticsearch-dsl = "7.4.0"
+django-elasticsearch-dsl = "7.2.0"
 
 
 [build-system]
