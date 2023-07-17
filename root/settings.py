@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     # third party apps
     'drf_yasg',
     'mptt',
+    'django_elasticsearch_dsl',
+    'django_elasticsearch_dsl_drf',
     'rest_framework_simplejwt',
     'django_filters',
     # my apps
@@ -124,6 +126,6 @@ AWS_S3_FILE_OVERWRITE = False
 # elastic search
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': 'localhost:9200'
+        'hosts': os.getenv('ELASTICSEARCH_URL')
     },
 }

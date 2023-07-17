@@ -7,3 +7,6 @@ del:
 	find . -path "*/migrations/*.pyc" -delete
 admin:
 	python3 manage.py createsuperuser --phone 998337377060 --email admin@gmail.com
+
+reindex:
+	python manage.py search_index --rebuild

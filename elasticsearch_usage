@@ -1,0 +1,5 @@
+# search
+http://127.0.0.1:8000/api/products/search/?search=shirin
+
+# suggest search
+http://127.0.0.1:8000/api/products/search/suggest?name__completion=olma

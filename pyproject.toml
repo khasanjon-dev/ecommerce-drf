@@ -19,7 +19,8 @@ coreapi = "^2.3.3"
 django-filter = "^23.2"
 elasticsearch = "7.14.0"
 elasticsearch-dsl = "7.4.0"
-django-elasticsearch-dsl = "7.2.0"
+django-elasticsearch-dsl = "7.3"
+django-elasticsearch-dsl-drf = "^0.22.5"
 
 
 [build-system]
